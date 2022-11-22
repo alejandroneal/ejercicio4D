@@ -11,4 +11,5 @@
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>daw.Alejandro.Ejercicio4DAlejandro</exec.mainClass>
     </properties>
+    <name>Ejercicio4DAlejandro</name>
 </project>

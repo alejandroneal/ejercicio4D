@@ -4,6 +4,7 @@
  */
 package daw.Alejandro;
 
+import com.sun.source.tree.BreakTree;
 import java.time.LocalDate;
 
 /**
@@ -76,6 +77,52 @@ public class Animales {
     
     public void comer(Animales animal, double cantidadGramos){
         cantidadGramos = Math.abs(cantidadGramos);
+        setPeso( peso + (int)(cantidadGramos));
+    }
+   
+    public void dormir(){
+        setEstado("dormido");
+    }
+    
+    public void despertar(){
+        setEstado("despierto");
+    }
+    
+    public void descansar(){
+        setEstado("reposando");
+    }
+    
+    public void jugar(int cantidadMinutos){
+        cantidadMinutos = Math.abs(cantidadMinutos);
         
+//        try {
+//            if (cantidadMinutos =< 180) {
+//                cantidadMinutos = cantidadMinutos;
+//            }
+//            
+//        } catch (IllegalArgumentException iae) {
+//            
+//        }
+        
+        if (cantidadMinutos < 30) {
+            setPeso( peso - 10);
+        } else {
+            int contador;
+            for(contador = 0; cantidadMinutos >= 30; contador++){
+                cantidadMinutos = cantidadMinutos - 30;
+            }
+            int pesoPerdido = contador * 20;
+            if (cantidadMinutos != 0) {
+                pesoPerdido = pesoPerdido + 10;
+            }
+            
+            setPeso(peso - pesoPerdido);
+        }
+    }
+    
+    public Animales clonar(Animales pet){
+        Animales clon = pet;
+        
+        return clon;
     }
 }
