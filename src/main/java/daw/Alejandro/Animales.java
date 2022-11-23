@@ -112,7 +112,7 @@ public class Animales {
         }
     }
 
-    public Animales clonar(Animales pet) {
+    public static Animales clonar(Animales pet) {
         
         Animales clon = null;
         
