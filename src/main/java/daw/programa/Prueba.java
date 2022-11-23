@@ -44,7 +44,8 @@ public class Prueba {
         p1.jugar(a1, 200);
         System.out.println("Peso de a1 después de comer: " + a1.getPeso());
         
-//        Animales clon = Animales.clonar(a1);
+//        Animales a4 = null;
+//        Animales clon = Animales.clonar(a4);
 //        System.out.println(clon);
     }
 }
