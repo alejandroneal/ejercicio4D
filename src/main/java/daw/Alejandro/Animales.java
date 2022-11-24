@@ -24,12 +24,12 @@ public class Animales {
 
     public Animales(String nombre, String tipo, int peso, String estado, LocalDate fechaNacimiento) {
         this.nombre = nombre;
-        this.tipo = (tipo.equals("perro")||tipo.equals("gato")
-                ||tipo.equals("pajaro")) ? tipo : null;
+        this.tipo = (tipo.equals("perro") || tipo.equals("gato")
+                || tipo.equals("pajaro")) ? tipo : null;
         this.peso = peso;
-        this.estado = (estado.equals("comiendo")||estado.equals("despierto")
-                ||estado.equals("durmiendo")||estado.equals("reposo")
-                ||estado.equals("jugando")) ? estado : null; //si no está en los parámetros pone null
+        this.estado = (estado.equals("comiendo") || estado.equals("despierto")
+                || estado.equals("durmiendo") || estado.equals("reposo")
+                || estado.equals("jugando")) ? estado : null; //si no está en los parámetros pone null
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -81,7 +81,8 @@ public class Animales {
 
     public void comer(double cantidadGramos) {
         cantidadGramos = Math.abs(cantidadGramos);
-        setPeso(peso + (int) (cantidadGramos));
+        this.peso += cantidadGramos;
+        this.estado = "comiendo";
     }
 
     public void dormir() {
@@ -98,32 +99,37 @@ public class Animales {
 
     public void jugar(int cantidadMinutos) {
         cantidadMinutos = Math.abs(cantidadMinutos);
-
-        if (cantidadMinutos < 30) {
-            setPeso(peso - 10);
+        if (cantidadMinutos > 180) {
+            throw new IllegalArgumentException();
         } else {
-            int contador;
-            for (contador = 0; cantidadMinutos >= 30; contador++) {
-                cantidadMinutos = cantidadMinutos - 30;
-            }
-            int pesoPerdido = contador * 20;
-            if (cantidadMinutos != 0) {
-                pesoPerdido = pesoPerdido + 10;
-            }
+            this.estado = "jugando";
+            if (cantidadMinutos < 30) {
+                setPeso(peso - 10);
+            } else {
+                //Se puede hacer con una división para que sea más rápido
+                int contador;
+                for (contador = 0; cantidadMinutos >= 30; contador++) {
+                    cantidadMinutos = cantidadMinutos - 30;
+                }
+                int pesoPerdido = contador * 20;
+                if (cantidadMinutos != 0) {
+                    pesoPerdido = pesoPerdido + 10;
+                }
 
-            setPeso(peso - pesoPerdido);
+                setPeso(peso - pesoPerdido);
+            }
         }
     }
 
     public static Animales clonar(Animales pet) {
-        
+
         Animales clon = null;
-        
-        if(pet != null){
-            clon = new Animales(pet.getNombre(),pet.getTipo(), pet.getPeso(),
+
+        if (pet != null) {
+            clon = new Animales(pet.getNombre(), pet.getTipo(), pet.getPeso(),
                     pet.getEstado(), pet.getFechaNacimiento());
-        } 
-        
+        }
+
         return clon;
     }
 }
