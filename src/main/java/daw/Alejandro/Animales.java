@@ -4,6 +4,8 @@
  */
 package daw.Alejandro;
 
+import clasesEnum.EstadoAnimal;
+import clasesEnum.Tipo;
 import com.sun.source.tree.BreakTree;
 import java.time.LocalDate;
 
@@ -14,22 +16,19 @@ import java.time.LocalDate;
 public class Animales {
 
     private String nombre;
-    private String tipo;
+    private Tipo tipo;
     private int peso;
-    private String estado;
+    private EstadoAnimal estado;
     private LocalDate fechaNacimiento;
 
     public Animales() {
     }
 
-    public Animales(String nombre, String tipo, int peso, String estado, LocalDate fechaNacimiento) {
+    public Animales(String nombre, Tipo tipo, int peso, EstadoAnimal estado, LocalDate fechaNacimiento) {
         this.nombre = nombre;
-        this.tipo = (tipo.equalsIgnoreCase("perro") || tipo.equalsIgnoreCase("gato")
-                || tipo.equalsIgnoreCase("pajaro")) ? tipo : null;
+        this.tipo = tipo;
         this.peso = peso;
-        this.estado = (estado.equalsIgnoreCase("comiendo") || estado.equalsIgnoreCase("despierto")
-                || estado.equalsIgnoreCase("durmiendo") || estado.equalsIgnoreCase("reposo")
-                || estado.equalsIgnoreCase("jugando")) ? estado : null; //si no está en los parámetros pone null
+        this.estado = estado; //si no está en los parámetros pone null
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -49,11 +48,11 @@ public class Animales {
         this.nombre = nombre;
     }
 
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
@@ -65,11 +64,11 @@ public class Animales {
         this.peso = peso;
     }
 
-    public String getEstado() {
+    public EstadoAnimal getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoAnimal estado) {
         this.estado = estado;
     }
 
@@ -82,19 +81,19 @@ public class Animales {
     public void comer(double cantidadGramos) {
         cantidadGramos = Math.abs(cantidadGramos);
         this.peso += cantidadGramos;
-        this.estado = "comiendo";
+        this.estado = EstadoAnimal.COMIENDO;
     }
 
     public void dormir() {
-        setEstado("dormido");
+        this.estado = EstadoAnimal.DURMIENDO;
     }
 
     public void despertar() {
-        setEstado("despierto");
+        this.estado = EstadoAnimal.DESPIERTO;
     }
 
     public void descansar() {
-        setEstado("reposando");
+        this.estado = EstadoAnimal.DESPIERTO;
     }
 
     public void jugar(int cantidadMinutos) {
@@ -102,7 +101,7 @@ public class Animales {
         if (cantidadMinutos > 180) {
             throw new IllegalArgumentException();
         } else {
-            this.estado = "jugando";
+            this.estado = EstadoAnimal.JUGANDO;
             if (cantidadMinutos < 30) {
                 setPeso(peso - 10);
             } else {
