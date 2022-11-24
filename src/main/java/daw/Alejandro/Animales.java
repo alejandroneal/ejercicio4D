@@ -24,9 +24,12 @@ public class Animales {
 
     public Animales(String nombre, String tipo, int peso, String estado, LocalDate fechaNacimiento) {
         this.nombre = nombre;
-        this.tipo = tipo;
+        this.tipo = (tipo.equals("perro")||tipo.equals("gato")
+                ||tipo.equals("pajaro")) ? tipo : null;
         this.peso = peso;
-        this.estado = estado;
+        this.estado = (estado.equals("comiendo")||estado.equals("despierto")
+                ||estado.equals("durmiendo")||estado.equals("reposo")
+                ||estado.equals("jugando")) ? estado : null; //si no está en los parámetros pone null
         this.fechaNacimiento = fechaNacimiento;
     }
 
