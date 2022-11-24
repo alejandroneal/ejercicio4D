@@ -4,8 +4,8 @@
  */
 package daw.Alejandro;
 
-import clasesEnum.EstadoAnimal;
-import clasesEnum.Tipo;
+import claseEnum.EstadoAnimal;
+import claseEnum.TipoAnimal;
 import com.sun.source.tree.BreakTree;
 import java.time.LocalDate;
 
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Animales {
 
     private String nombre;
-    private Tipo tipo;
+    private TipoAnimal tipo;
     private int peso;
     private EstadoAnimal estado;
     private LocalDate fechaNacimiento;
@@ -24,14 +24,23 @@ public class Animales {
     public Animales() {
     }
 
-    public Animales(String nombre, Tipo tipo, int peso, EstadoAnimal estado, LocalDate fechaNacimiento) {
+    public Animales(String nombre, TipoAnimal tipo, int peso, EstadoAnimal estado, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.peso = peso;
         this.estado = estado; //si no está en los parámetros pone null
         this.fechaNacimiento = fechaNacimiento;
     }
-
+/* public Animales(String nombre, String tipo, int peso, String estado, LocalDate fechaNacimiento) {
+       this.nombre = nombre;
+       this.tipo = (tipo.equalsIgnoreCase("")||tipo.equalsIgnoreCase("")||
+                tipo.equalsIgnoreCase("")||tipo.equalsIgnoreCase("")) ? tipo : null;
+       this.peso = peso;
+       this.estado = (estado.equalsIgnoreCase("")||estado.equalsIgnoreCase("")||
+                estado.equalsIgnoreCase("")||estado.equalsIgnoreCase("")) ? estado : null; //si no está en los parámetros pone null
+       this.fechaNacimiento = fechaNacimiento;
+    }
+*/
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -48,11 +57,11 @@ public class Animales {
         this.nombre = nombre;
     }
 
-    public Tipo getTipo() {
+    public TipoAnimal getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(TipoAnimal tipo) {
         this.tipo = tipo;
     }
 
@@ -93,7 +102,7 @@ public class Animales {
     }
 
     public void descansar() {
-        this.estado = EstadoAnimal.DESPIERTO;
+        this.estado = EstadoAnimal.REPOSO;
     }
 
     public void jugar(int cantidadMinutos) {

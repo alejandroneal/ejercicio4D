@@ -4,6 +4,8 @@
  */
 package daw.programa;
 
+import claseEnum.EstadoAnimal;
+import claseEnum.TipoAnimal;
 import daw.Alejandro.Animales;
 import daw.Alejandro.Persona;
 import java.time.LocalDate;
@@ -15,11 +17,11 @@ import java.time.LocalDate;
 public class Prueba {
     public static void main(String[] args) {
         
-        Animales a1 = new Animales("Pipo", "perro", 6000,
-                "dormido", LocalDate.of(2020, 10, 24));
+        Animales a1 = new Animales("Pipo", TipoAnimal.PERRO, 6000,
+                EstadoAnimal.JUGANDO, LocalDate.of(2020, 10, 24));
         System.out.println(a1);
-        Animales a2 = new Animales("rosa", "gato", 2500, 
-                "jugando", LocalDate.of(2021, 4, 30));
+        Animales a2 = new Animales("rosa", TipoAnimal.GATO, 2500, 
+                EstadoAnimal.DURMIENDO, LocalDate.of(2021, 4, 30));
         System.out.println(a2);
         
         Persona p1 = new Persona("Antonio", 24);
